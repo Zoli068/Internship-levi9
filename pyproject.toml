@@ -1,0 +1,45 @@
+[project]
+name = "data-ai-praksa-2026"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "aws-cdk-lib>=2.254.0",
+    "boto3>=1.43.9",
+    "constructs>=10.6.0",
+]
+
+[dependency-groups]
+dev = [
+    "black>=26.5.0",
+    "mypy>=2.1.0",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.13",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=. --cov-report=term-missing --cov-fail-under=100"
+
+[tool.coverage.run]
+source = ["services", "infra"]
+omit = [
+    "infra/app.py",
+    "tests/*",   
+    "**/__init__.py"
+]

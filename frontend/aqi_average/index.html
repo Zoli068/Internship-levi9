@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI & AI Analysis Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        #report-text {
+            white-space: pre-wrap; 
+            font-size: 16px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            text-align: center;
+            color: #7f8c8d;
+            border-top: 1px solid #ecf0f1;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Latest Air Quality AI Report</h1>
+        <div id="report-text">Loading latest report...</div> 
+    </div>
+
+    <div class="footer">
+        &copy; 2026 Weather & AQI Analytics Hub.<br>Application created by: Vladimir Fodor, Aleksandar Velickovic, Zoltan Lacko
+    </div>
+
+    <script>
+        async function fetchReport() {
+            try {
+                const response = await fetch('./report.json');
+                
+                if (!response.ok) {
+                    throw new Error('Izveštaj nije pronađen.');
+                }
+                
+                const data = await response.json();
+                
+                document.getElementById('report-text').innerText = data.text;
+                
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById('report-text').innerText = "Error while loading the report";
+            }
+        }
+        window.onload = fetchReport;
+    </script>
+</body>
+</html>
