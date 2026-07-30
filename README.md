@@ -1,6 +1,6 @@
 # data-ai-praksa-2026
 
-This repository contains infrastructure code (AWS CDK), service code, and tests for the 2026 Data/AI internship project, developed by a team of three.
+This repository contains infrastructure code (AWS CDK), service code, and tests for the Levi9 2026 Data/AI internship project, developed by a team of three.
 
 This project is an end-to-end cloud platform for air quality monitoring that ingests and correlates data from multi-location IoT sensors and public weather APIs using AWS Lambda. The data pipeline leverages Amazon S3 for storage, AWS Glue and Step Functions for ETL orchestration, Amazon Athena for querying, and Grafana for visual analytics. Additionally, an AI agent powered by AWS Bedrock is integrated to enable conversational interaction with the processed data. The entire cloud infrastructure is defined as Infrastructure as Code using AWS CDK, supported by an automated CI/CD deployment pipeline.
 
